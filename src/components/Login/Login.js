@@ -2,6 +2,7 @@ import React from 'react'
 import './Login.css';
 import logo from '../../assets/img/logo.png';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -23,7 +24,7 @@ export default function Login() {
                             <h1>Login</h1>
                         </div>
                         <div className="register-button">
-                            <button><a href="/register">Inscreva-se</a></button>
+                            <button><Link to="/register">Inscreva-se</Link></button>
                         </div>
                     </div>
                     <div className="input-group">
