@@ -3,20 +3,35 @@ import './Register.css';
 import logo from '../../assets/img/logo.png';
 import InputMask from 'react-input-mask'
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import {api} from '../../services/api';
 import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export default function Register() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
+        data.name = data.firstName + " " + data.lastName
+        delete data.firstName
+        delete data.lastName
         console.log(data)
-        axios.post(process.env.BACKEND_URL, data)
-        .then(response => response.json())
-        .then(data => console.log(data))
+        api.post('/user/register', data)
+        .then(data => {
+            console.log(data)
+            if (data.status == 201) {
+                toast.success("Usuario registrado com sucesso! um convite com QRCode foi enviado para seu e-mail!", {duration: 10000})
+            }
+        })
+        .catch(err => {
+            toast.error(`Algo de errado aconteceu: ${err.response?.data?.detail}`, {duration: 5000})
+        })       
+
     }
 
     return (
+        <>   
+        <div><Toaster/></div>
         <div className="register-body">
         <div className="container">
         <div className="form-image">  
@@ -55,7 +70,7 @@ export default function Register() {
                     </div>
                     <div className="input-box">
                         <label htmlFor="confirmpassword">Confirme sua senha</label>
-                        <input id="confirmpassword"type="password" name="confirmpassword" placeholder="Confirme sua senha" {...register("confirmPassword", {required: true})} required/>
+                        <input id="confirmpassword"type="password" name="confirmpassword" placeholder="Confirme sua senha" required/>
                     </div>
                 </div>
                 <div className="gender-inputs">
@@ -88,5 +103,6 @@ export default function Register() {
         </div>
     </div>
     </div>
+    </>
     )
 }

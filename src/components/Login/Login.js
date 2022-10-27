@@ -2,10 +2,17 @@ import React from 'react'
 import './Login.css';
 import logo from '../../assets/img/logo.png';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 export default function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { signed } = useAuth();
+    const navigate = useNavigate()
+      if (signed) {
+        navigate('/dashboard')
+      }
+
 
     const onSubmit = (data) => {
         console.log(data)
