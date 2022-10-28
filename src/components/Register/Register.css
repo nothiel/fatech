@@ -147,6 +147,35 @@ code {
 
 .gender-input label {
    font-size: 0.81rem;
+   
+   color: #000000c0; 
+}
+
+.type-title h6 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.type-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0.5rem;
+}
+
+.type-input {
+    display: flex;
+    align-items: center;
+    
+}
+
+.type-input input {
+    margin-right: 0.35rem;
+}
+
+.type-input label {
+   font-size: 0.81rem;
    font-weight: 600;
    color: #000000c0; 
 }

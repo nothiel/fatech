@@ -22,7 +22,7 @@ export default function Login() {
         <div className="loginBody">
         <div className="container">
             <div className="form-image">  
-                <img src={logo}/>
+                <img src={logo} alt="fatech"/>
             </div>
             <div className="form">
                 <form action="#"  onSubmit={handleSubmit(onSubmit)}>
