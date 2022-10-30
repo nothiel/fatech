@@ -61,7 +61,7 @@ export default function Register() {
                        </div>
                        <div className="input-box">
                             <label htmlFor="number">Celular</label>
-                            <InputMask id="number" type="tel" name="number" placeholder="(xx) xxxxx-xxxx" mask={"(99) 99999-9999"} required/>
+                            <InputMask id="number" type="tel" name="number" placeholder="(xx) xxxxx-xxxx" mask={"(99) 99999-9999"} {...register("phone", {required: true})} required/>
                         </div>
                         <div className="input-box">
                             <label htmlFor="password">Senha</label>
@@ -97,15 +97,15 @@ export default function Register() {
                         </div>
                         <div className="type-group">
                             <div className="type-input"> 
-                                <input type="radio" id="guest" name="type" value="guest" {...register("type", { required: true })}/>
+                                <input type="radio" id="guest" name="type" value="guest" {...register("guest_type", { required: true })}/>
                                 <label htmlFor="convidado">Convidado</label>
                             </div>
                             <div className="type-input"> 
-                                <input type="radio" id="student" name="type" value="student" {...register("type", { required: true })}/>
+                                <input type="radio" id="student" name="type" value="student" {...register("guest_type", { required: true })}/>
                                 <label htmlFor="student">Aluno</label>
                             </div>
                             <div className="type-input"> 
-                                <input type="radio" id="teacher" name="type" value="teacher" {...register("type", { required: true })}/>
+                                <input type="radio" id="teacher" name="type" value="teacher" {...register("guest_type", { required: true })}/>
                                 <label htmlFor="teacher">Professor</label>
                             </div>
                         </div>
