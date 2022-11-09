@@ -43,7 +43,7 @@ export default function Register() {
                             <h1>Cadastre-se</h1>
                         </div>
                         <div className="login-button">
-                            <button><Link to="/login">Entrar</Link></button>
+                        <Link to="/login"><button type="button" style={{color: 'white'}}>Entrar</button></Link>
                         </div>
                     </div>
                     <div className="input-group">

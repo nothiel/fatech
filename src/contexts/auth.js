@@ -10,14 +10,14 @@ export function AuthProvider({ children }) {
 
   const navigate = useNavigate();
   
-  const isAuthenticated = !!user;
+  const signed = !!user;
 
   useEffect(() => {
     const token = localStorage.getItem("ftcToken")
 
     if (token) {
-      recoverUserInformation().then(response => {
-        setUser(response.user)
+      recoverUserInformation(token).then(response => {
+        setUser(response.data)
       })
     }
   }, [])
@@ -35,10 +35,11 @@ export function AuthProvider({ children }) {
     setUser(user)
 
     navigate('/dashboard');
+    
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn }}>
+    <AuthContext.Provider value={{ user, signed, signIn }}>
       {children}
     </AuthContext.Provider>
   )

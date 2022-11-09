@@ -4,22 +4,25 @@ import logo from '../../assets/img/logo.png';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export default function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { signed } = useAuth();
+    const { signed, signIn } = useAuth();
     const navigate = useNavigate()
-      if (signed) {
+    if (signed) {
         navigate('/dashboard')
       }
 
-
     const onSubmit = (data) => {
-        console.log(data)
-        console.log(errors)
+        if (!signIn(data)) {
+            toast.error("Erro ao logar")
+        }
     }
     return (
         <div className="loginBody">
+        <div><Toaster/></div>
         <div className="container">
             <div className="form-image">  
                 <img src={logo} alt="fatech"/>
@@ -31,7 +34,7 @@ export default function Login() {
                             <h1>Login</h1>
                         </div>
                         <div className="register-button">
-                            <button><Link to="/register">Inscreva-se</Link></button>
+                        <Link to="/register"><button type="button" style={{color: 'white'}}>Inscreva-se</button></Link>
                         </div>
                     </div>
                     <div className="input-group">
@@ -41,7 +44,7 @@ export default function Login() {
                        </div>
                         <div className="input-box">
                             <label htmlFor="password">Senha</label>
-                            <input id="password"type="password" name="password" placeholder="Digite sua senha" {...register("birth_date", {required: true})}/>
+                            <input id="password"type="password" name="password" placeholder="Digite sua senha" {...register("password", {required: true})}/>
                         </div>
                     </div>
                     <div className="continue-button">
