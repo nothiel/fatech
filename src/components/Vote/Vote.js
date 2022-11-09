@@ -23,7 +23,7 @@ export default function Vote() {
     <>
     <Toaster/>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="undefined" placeholder="Digite seu email..." {...register} />
+      <input type="undefined" placeholder="Digite seu email..." {...register('email')} />
       <input type="submit" />
     </form>
     </>
