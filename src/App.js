@@ -6,6 +6,7 @@ import Register from './components/Register/Register';
 import HomePage from './components/HomePage/HomePage';
 
 import { ProtectedRoute } from './utils/protectedRoute';
+import Vote from './components/Vote/Vote';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>}/>
           <Route path="*" element={<HomePage/>}/>
+          <Route path="/projects/vote/:project_id" element={<Vote/>}/>
       </Routes>
   );
 }

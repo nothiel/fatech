@@ -16,6 +16,9 @@ function ProjectItem({name, description, project_id, img_id, openModal, setCurrP
             
             toast.success("Votado com sucesso!")
         })
+        .catch(()=> {
+          toast.error("Erro ao votar!")
+        })
         }
 
     return (
